@@ -1,7 +1,7 @@
 package com.betrybe.agrix.ebytr.staff.controllers.dtos;
 
 /**
- * TokenDto
+ * TokenDto.
  */
 public record TokenDto(String token) {
 }

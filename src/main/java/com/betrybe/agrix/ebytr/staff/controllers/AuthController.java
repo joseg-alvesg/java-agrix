@@ -1,5 +1,8 @@
 package com.betrybe.agrix.ebytr.staff.controllers;
 
+import com.betrybe.agrix.ebytr.staff.controllers.dtos.AuthDto;
+import com.betrybe.agrix.ebytr.staff.controllers.dtos.TokenDto;
+import com.betrybe.agrix.ebytr.staff.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,10 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.betrybe.agrix.ebytr.staff.controllers.dtos.AuthDto;
-import com.betrybe.agrix.ebytr.staff.controllers.dtos.TokenDto;
-import com.betrybe.agrix.ebytr.staff.service.TokenService;
-
+/**
+ * AuthController.
+ */
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -20,6 +22,12 @@ public class AuthController {
   private final TokenService tokenService;
   private final AuthenticationManager authenticationManager;
 
+  /**
+   * Método construtor.
+   *
+   * @param authenticationManager Classe que realiza a autenticação.
+   * @param tokenService          Serviço de token.
+   */
   @Autowired
   public AuthController(
       AuthenticationManager authenticationManager,
@@ -29,9 +37,16 @@ public class AuthController {
 
   }
 
+  /**
+   * Método que realiza o login.
+   *
+   * @param authDto dto com as informações de autenticação.
+   * @return TokenDto com o token gerado.
+   */
   @PostMapping("/login")
   public TokenDto login(@RequestBody AuthDto authDto) {
-    UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(authDto.username(),
+    UsernamePasswordAuthenticationToken usernamePassword = new UsernamePasswordAuthenticationToken(
+        authDto.username(),
         authDto.password());
     System.out.println("usernamePassword: " + usernamePassword);
 

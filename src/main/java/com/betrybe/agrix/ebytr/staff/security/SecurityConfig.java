@@ -16,6 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * SecurityConfig.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
@@ -23,11 +26,23 @@ public class SecurityConfig {
 
   private JwtFilter jwtFilter;
 
+  /**
+   * Método construtor.
+   *
+   * @param jwtFilter JwtFilter
+   */
   @Autowired
   public SecurityConfig(JwtFilter jwtFilter) {
     this.jwtFilter = jwtFilter;
   }
 
+  /**
+   * Método que configura a segurança da aplicação.
+   *
+   * @param httpSecurity HttpSecurity
+   * @return SecurityFilterChain
+   * @throws Exception Exceção
+   */
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
     return httpSecurity
