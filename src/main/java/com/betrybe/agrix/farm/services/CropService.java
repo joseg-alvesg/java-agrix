@@ -1,7 +1,7 @@
-package com.betrybe.agrix.ebytr.staff.service;
+package com.betrybe.agrix.farm.services;
 
-import com.betrybe.agrix.ebytr.staff.entity.Crops;
-import com.betrybe.agrix.ebytr.staff.repository.CropsRepository;
+import com.betrybe.agrix.farm.entity.Crops;
+import com.betrybe.agrix.farm.repository.CropsRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

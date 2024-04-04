@@ -1,7 +1,7 @@
-package com.betrybe.agrix.ebytr.staff.controllers;
+package com.betrybe.agrix.auth.controllers;
 
-import com.betrybe.agrix.ebytr.staff.controllers.dtos.AuthDto;
-import com.betrybe.agrix.ebytr.staff.controllers.dtos.TokenDto;
+import com.betrybe.agrix.auth.controllers.dtos.AuthDto;
+import com.betrybe.agrix.auth.controllers.dtos.TokenDto;
 import com.betrybe.agrix.ebytr.staff.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

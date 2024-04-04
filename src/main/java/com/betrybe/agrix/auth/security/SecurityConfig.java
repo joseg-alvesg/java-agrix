@@ -1,4 +1,4 @@
-package com.betrybe.agrix.ebytr.staff.security;
+package com.betrybe.agrix.auth.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

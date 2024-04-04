@@ -1,7 +1,7 @@
-package com.betrybe.agrix.ebytr.staff.service;
+package com.betrybe.agrix.farm.services;
 
-import com.betrybe.agrix.ebytr.staff.entity.Fertilizers;
-import com.betrybe.agrix.ebytr.staff.repository.FertilizerRepository;
+import com.betrybe.agrix.farm.entity.Fertilizers;
+import com.betrybe.agrix.farm.repository.FertilizerRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

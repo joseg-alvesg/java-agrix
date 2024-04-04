@@ -1,4 +1,4 @@
-package com.betrybe.agrix.ebytr.staff.entity;
+package com.betrybe.agrix.farm.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;

@@ -1,11 +1,11 @@
-package com.betrybe.agrix.ebytr.staff.controllers;
+package com.betrybe.agrix.farm.controllers;
 
-import com.betrybe.agrix.ebytr.staff.controllers.dtos.CropsDto;
-import com.betrybe.agrix.ebytr.staff.controllers.dtos.FertilizerDto;
-import com.betrybe.agrix.ebytr.staff.entity.Crops;
-import com.betrybe.agrix.ebytr.staff.entity.Fertilizers;
-import com.betrybe.agrix.ebytr.staff.service.CropService;
-import com.betrybe.agrix.ebytr.staff.service.FertilizerService;
+import com.betrybe.agrix.farm.controllers.dtos.CropsDto;
+import com.betrybe.agrix.farm.controllers.dtos.FertilizerDto;
+import com.betrybe.agrix.farm.entity.Crops;
+import com.betrybe.agrix.farm.entity.Fertilizers;
+import com.betrybe.agrix.farm.services.CropService;
+import com.betrybe.agrix.farm.services.FertilizerService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

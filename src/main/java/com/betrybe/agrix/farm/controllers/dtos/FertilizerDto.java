@@ -1,6 +1,6 @@
-package com.betrybe.agrix.ebytr.staff.controllers.dtos;
+package com.betrybe.agrix.farm.controllers.dtos;
 
-import com.betrybe.agrix.ebytr.staff.entity.Fertilizers;
+import com.betrybe.agrix.farm.entity.Fertilizers;
 
 /**
  * FertilizerDto.

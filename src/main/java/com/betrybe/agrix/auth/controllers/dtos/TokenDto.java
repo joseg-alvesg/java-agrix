@@ -1,4 +1,4 @@
-package com.betrybe.agrix.ebytr.staff.controllers.dtos;
+package com.betrybe.agrix.auth.controllers.dtos;
 
 /**
  * TokenDto.

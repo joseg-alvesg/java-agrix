@@ -1,4 +1,4 @@
-package com.betrybe.agrix.ebytr.staff.security;
+package com.betrybe.agrix.auth.security;
 
 import com.betrybe.agrix.ebytr.staff.service.PersonService;
 import com.betrybe.agrix.ebytr.staff.service.TokenService;
