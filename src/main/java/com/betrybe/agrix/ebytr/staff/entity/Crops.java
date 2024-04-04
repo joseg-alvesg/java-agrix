@@ -12,11 +12,14 @@ import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.security.access.annotation.Secured;
+
 /**
  * Crops entity.
  */
 @Entity
 @Table(name = "crops")
+@Secured({ "MANAGER", "ADMIN" })
 public class Crops {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
