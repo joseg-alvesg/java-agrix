@@ -33,4 +33,11 @@ public class TokenService {
   private Instant generateExpirationDate() {
     return Instant.now().plus(8, ChronoUnit.HOURS);
   }
+
+  public String validateToken(String token) {
+    return JWT.require(algorithm)
+        .build()
+        .verify(token)
+        .getSubject();
+  }
 }
