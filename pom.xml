@@ -165,7 +165,7 @@
             <usePhrasedClassNameInTestCaseSummary>true</usePhrasedClassNameInTestCaseSummary>
           </statelessTestsetInfoReporter>
           <includes>
-            <include>com/betrybe/agrix/evaluation/**/*Test.java</include>
+            <include>com/agrix/evaluation/**/*Test.java</include>
           </includes>
         </configuration>
       </plugin>
@@ -174,7 +174,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
-          <mainClass>com.betrybe.agrix.AgrixApplication</mainClass>
+          <mainClass>com.agrix.AgrixApplication</mainClass>
           <layout>JAR</layout>
         </configuration>
       </plugin>
