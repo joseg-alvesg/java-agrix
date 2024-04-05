@@ -1,10 +1,85 @@
-# :construction: README em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto.
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+# Agrix
+
+![soja](./images/soja.jpg)
+
+### Agrix é um sistema de gerenciamento de fazendas, que permite o controle de plantações, fertilização e usuarios.
+
+#### Funcionalidades:
+
+- Cadastro e manipulação de usuarios
+- Cadastro e manipulação de fazendas
+- Cadastro e manipulação de plantações
+- Cadastro e manipulação de fertilização
+
+#### Tecnologias utilizadas:
+
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+
+- Spring Boot
+- Spring Data
+- Spring Security
+- Maven
+
+#### Como rodar o projeto:
+
+Existe um container generico para rodar o mysql, para rodar o container execute o comando:
+
+```bash
+# builda a imagem
+docker build -t <nome-da-imagem> -f Dockerfile .
+
+# roda o container
+docker run -d -p 3306:3306 <nome-da-imagem> --name <nome-do-container
+# Caso queira alterar a configurações genericas do container, altere o arquivo `Dockerfile`.
+```
+
+As informações de conexão com o banco de dados estão no arquivo `application.properties` dentro de `src/main/resources` altere baseado no seu banco de dados.
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/agrix?createDatabaseIfNotExist=true
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+api.security.token.secret=${JWT_SECRET:r1r2l1l2trianguloquadradobolaXcimabaixoesquerdadireita}
+```
+
+Para rodar o projeto execute o comando:
+
+```bash
+# instale as dependencias
+mvn install
+# execute o projeto
+mvn spring-boot:run
+
+# shortway
+mvn install -Dskiptests -Dcheckstyle.skip && mvn spring-boot:run
+```
+
+#### Endpoints/authorização:
+
+- farms (user, manager, admin)
+  - POST `/farms`
+  - GET `/farms`
+  - GET `/farms/{id}`
+  - POST `/farms/{farmId}/crops`
+  - GET `/farms/{farmId}/crops`
+- crops (manager, admin)
+  - GET `/crops`
+  - GET `/crops/{id}`
+  - GET `/crops/search?start={date}&end={date}`
+  - GET `/crop/{cropId}/fertilizers`
+  - POST `/crops/{cropId}/fertilizers/{fertilizerId}`
+- fertilizers (admin)
+  - POST `/fertilizers`
+  - GET `/fertilizers`
+  - GET `/fertilizers/{id}`
+- persons (all)
+  - POST `/persons`
+
+obs: auhorizações(roles) precisam ser fornecidas em letras minúsculas.
+
