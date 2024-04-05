@@ -5,6 +5,10 @@ import com.agrix.farm.controllers.dtos.FarmDto;
 import com.agrix.farm.entity.Crops;
 import com.agrix.farm.entity.Farm;
 import com.agrix.farm.services.FarmService;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,6 +29,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/farms")
 @Secured({ "USER", "MANAGER", "ADMIN" })
+@SecurityRequirement(name = "Authentication")
+@Tag(name = "Farms", description = "Farms need USER, MANAGER or ADMIN permission")
 public class FarmController {
 
   /**

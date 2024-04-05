@@ -60,26 +60,6 @@ mvn spring-boot:run
 mvn install -Dskiptests -Dcheckstyle.skip && mvn spring-boot:run
 ```
 
-#### Endpoints/authorização:
+#### Documentação:
 
-- farms (user, manager, admin)
-  - POST `/farms`
-  - GET `/farms`
-  - GET `/farms/{id}`
-  - POST `/farms/{farmId}/crops`
-  - GET `/farms/{farmId}/crops`
-- crops (manager, admin)
-  - GET `/crops`
-  - GET `/crops/{id}`
-  - GET `/crops/search?start={date}&end={date}`
-  - GET `/crop/{cropId}/fertilizers`
-  - POST `/crops/{cropId}/fertilizers/{fertilizerId}`
-- fertilizers (admin)
-  - POST `/fertilizers`
-  - GET `/fertilizers`
-  - GET `/fertilizers/{id}`
-- persons (all)
-  - POST `/persons`
-
-obs: auhorizações(roles) precisam ser fornecidas em letras minúsculas.
-
+A documentação da API pode ser acessada em `http://localhost:8080/swagger-ui/index.html` após rodar o projeto.

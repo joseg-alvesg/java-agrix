@@ -6,6 +6,10 @@ import com.agrix.farm.entity.Crops;
 import com.agrix.farm.entity.Fertilizers;
 import com.agrix.farm.services.CropService;
 import com.agrix.farm.services.FertilizerService;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -26,6 +30,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/crops")
 @Secured({ "MANAGER", "ADMIN" })
+@SecurityRequirement(name = "Authentication")
+@Tag(name = "Crops", description = "Crops need MANAGER or ADMIN permission")
 public class CropController {
 
   /**

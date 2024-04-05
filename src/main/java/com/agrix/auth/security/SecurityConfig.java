@@ -16,13 +16,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
+import io.swagger.v3.oas.annotations.security.SecurityScheme;
+
 /**
  * SecurityConfig.
  */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(securedEnabled = true)
+@SecurityScheme(name = "Authentication", type = SecuritySchemeType.HTTP, scheme = "bearer")
 public class SecurityConfig {
+
+  private static String[] WHITELIST = {
+      "/v3/api-docs/**",
+      "/configuration/**",
+      "/swagger-resources/**",
+      "/configuration/security",
+      "/swagger-ui/**",
+      "/webjars/**"
+  };
 
   private JwtFilter jwtFilter;
 
@@ -52,6 +65,7 @@ public class SecurityConfig {
         .authorizeHttpRequests(authorize -> authorize
             .requestMatchers(HttpMethod.POST, "/persons").permitAll()
             .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+            .requestMatchers(WHITELIST).permitAll()
             .anyRequest().authenticated())
         .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
         .build();

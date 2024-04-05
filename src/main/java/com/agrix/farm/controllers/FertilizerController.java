@@ -3,6 +3,10 @@ package com.agrix.farm.controllers;
 import com.agrix.farm.controllers.dtos.FertilizerDto;
 import com.agrix.farm.entity.Fertilizers;
 import com.agrix.farm.services.FertilizerService;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/fertilizers")
 @Secured("ADMIN")
+@SecurityRequirement(name = "Authentication")
+@Tag(name = "Fertilizers", description = "Fertilizers need ADMIN permission")
 public class FertilizerController {
   private final FertilizerService fertilizerService;
 
