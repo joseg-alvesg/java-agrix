@@ -2,10 +2,10 @@ FROM eclipse-temurin:17-jdk-jammy as build-image
 WORKDIR /app
 
 COPY .mvn/ .mvn
-COPY ./src/main/ ./src/main/
+COPY ./src/ ./src/
 COPY mvnw pom.xml ./
 
-RUN ./mvnw clean package
+RUN ./mvnw clean package -DskipTests
 
 
 FROM eclipse-temurin:17-jre-jammy
