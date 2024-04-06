@@ -1,13 +1,16 @@
-FROM mysql:latest
+FROM eclipse-temurin:17-jdk-jammy as build-image
+WORKDIR /app
 
-ARG MYSQL_ROOT_PASSWORD
-ARG MYSQL_DATABASE
-ARG MYSQL_USER
-ARG MYSQL_PASSWORD
+COPY .mvn/ .mvn
+COPY ./src/main/ ./src/main/
+COPY mvnw pom.xml ./
 
-ENV MYSQL_ROOT_PASSWORD=root
-ENV MYSQL_DATABASE=agrix
-ENV MYSQL_USER=agrix
-ENV MYSQL_PASSWORD=agrix
+RUN ./mvnw clean package
 
-EXPOSE 3306
+
+FROM eclipse-temurin:17-jre-jammy
+
+COPY --from=build-image /app/target/*.jar /app/app.jar
+
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
