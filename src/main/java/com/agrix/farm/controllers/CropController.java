@@ -6,10 +6,8 @@ import com.agrix.farm.entity.Crops;
 import com.agrix.farm.entity.Fertilizers;
 import com.agrix.farm.services.CropService;
 import com.agrix.farm.services.FertilizerService;
-
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;

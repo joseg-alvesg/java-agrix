@@ -3,9 +3,7 @@ package com.agrix.auth.controllers;
 import com.agrix.auth.controllers.dtos.AuthDto;
 import com.agrix.auth.controllers.dtos.TokenDto;
 import com.agrix.staff.service.TokenService;
-
 import io.swagger.v3.oas.annotations.tags.Tag;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +26,7 @@ public class AuthController {
 
   /**
    * Método construtor.
+   * jdbc:postgresql://${DB_HOSTNAME}:${DB_PORT}/${DB_NAME}
    *
    * @param authenticationManager Classe que realiza a autenticação.
    * @param tokenService          Serviço de token.
