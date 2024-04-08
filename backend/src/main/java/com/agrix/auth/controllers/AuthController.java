@@ -57,4 +57,9 @@ public class AuthController {
 
     return new TokenDto(token);
   }
+
+  @PostMapping("/token")
+  public String validateToken(@RequestBody TokenDto tokenDto) {
+    return tokenService.validateToken(tokenDto.token());
+  }
 }
