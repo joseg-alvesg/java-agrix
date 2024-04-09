@@ -1,0 +1,2 @@
+- person
+  - [ ] farm creator = farm admin

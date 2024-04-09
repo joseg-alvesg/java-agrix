@@ -3,6 +3,10 @@ export interface ILogin {
   password: string;
 }
 
+export interface IRegister extends ILogin {
+  role: string;
+}
+
 export interface IToken {
   token: string;
 }

@@ -1,5 +1,11 @@
 <div class="box">
-  <form [formGroup]="formulario" #formDir="ngForm">
+  <h1>{{ title }}</h1>
+  <p>{{ message }}</p>
+  <form
+    [formGroup]="formulario"
+    #formDir="ngForm"
+    (keyup.enter)="registro ? register() : login()"
+  >
     <label for="username"> Username: </label>
     <input
       type="text"
@@ -21,9 +27,12 @@
         required
       />
     </label>
-    <button type="button" (click)="login()">Login</button>
+    <button type="button" (click)="registro ? register() : login()">
+      Login
+    </button>
+    {{ registro }}
   </form>
   <div>
-    <a routerLink="/register">Register</a>
+    <button (click)="formUpdate()">{{ sign }}</button>
   </div>
 </div>

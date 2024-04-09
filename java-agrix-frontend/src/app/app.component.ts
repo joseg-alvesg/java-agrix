@@ -43,4 +43,9 @@ export class AppComponent {
     }
     this.requestToken(token);
   }
+
+  public logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 }
