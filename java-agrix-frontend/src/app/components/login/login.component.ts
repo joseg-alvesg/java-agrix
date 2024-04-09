@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Injectable } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ILogin, IRegister, IToken } from './login.interface';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
+import { ILogin, IRegister, IToken } from '../../interfaces/login';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private loginService: LoginService,
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class LoginComponent {
       username: this.formulario.value.username,
       password: this.formulario.value.password,
     };
-    this.http.post<any>('http://localhost:8080/auth/login', login).subscribe({
+    this.loginService.login(login).subscribe({
       next: (response) => {
         console.log('resp1', response);
         const token: IToken = response;
@@ -65,7 +67,7 @@ export class LoginComponent {
       password: this.formulario.value.password,
       role: 'USER',
     };
-    this.http.post<any>('http://localhost:8080/persons', login).subscribe({
+    this.loginService.register(login).subscribe({
       next: (response) => {
         this.message = `Usuario ${response.username} cadastrado com sucesso!`;
       },
