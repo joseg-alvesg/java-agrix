@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { ILogin, IRegister, IToken } from '../../interfaces/login';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +21,6 @@ export class LoginComponent {
   message!: string;
 
   constructor(
-    private http: HttpClient,
     private router: Router,
     private loginService: LoginService,
   ) {}

@@ -14,6 +14,6 @@ export class LoginService {
   }
 
   register(login: IRegister): Observable<any> {
-    return this.http.post<any>('http://localhost:8080/auth/register', login);
+    return this.http.post<any>('http://localhost:8080/persons', login);
   }
 }

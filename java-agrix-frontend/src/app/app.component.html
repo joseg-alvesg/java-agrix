@@ -1,7 +1,8 @@
 <main class="main">
   <nav class="container">
     <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['/farms']">Farm</a>
     <button type="button" (click)="logout()">logout</button>
   </nav>
+  <router-outlet />
 </main>
-<router-outlet />

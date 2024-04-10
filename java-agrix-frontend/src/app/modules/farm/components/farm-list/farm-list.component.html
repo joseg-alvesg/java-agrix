@@ -1,1 +1,27 @@
-<p>farm-list works!</p>
+<div class="box">
+  <form [formGroup]="formulario" #formDir="ngForm" (keyup.enter)="newFarm()">
+    <label for="name">Nome</label>
+    <input
+      type="text"
+      name="name"
+      alt="Type the farm name"
+      class="form-control"
+      formControlName="name"
+      required
+    />
+    <label for="size">Tamanho</label>
+    <input
+      type="number"
+      name="size"
+      alt="Type the farm size"
+      class="form-control"
+      formControlName="size"
+      required
+    />
+    <button type="button" (click)="newFarm()">s</button>
+  </form>
+  <div *ngFor="let farm of farms">
+    <p>{{ farm.name }}</p>
+    <p>{{ farm.size }}</p>
+  </div>
+</div>

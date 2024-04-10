@@ -95,4 +95,30 @@ public class FarmService {
     }
     return Optional.empty();
   }
+
+  /**
+   * Método que atualiza uma fazenda.
+   *
+   * @param id    id da fazenda
+   * @param crops DTO da plantação
+   * @return Optional com a plantação atualizada ou um Optional vazio.
+   */
+  public Optional<Crops> updateCrops(Long id, Crops crops) {
+    Optional<Crops> optionalCrops = cropsRepository.findById(id);
+    if (optionalCrops.isPresent()) {
+      Crops savedCrops = cropsRepository.save(crops);
+      return Optional.of(savedCrops);
+    }
+    return Optional.empty();
+  }
+
+  public Optional<Farm> updateFarm(Long id, Farm farm) {
+    Optional<Farm> optionalFarm = farmRepository.findById(id);
+    if (optionalFarm.isPresent()) {
+      Farm savedFarm = farmRepository.save(farm);
+      System.out.println(savedFarm);
+      return Optional.of(savedFarm);
+    }
+    return Optional.empty();
+  }
 }

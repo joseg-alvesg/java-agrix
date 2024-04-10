@@ -17,6 +17,7 @@ import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -144,4 +145,18 @@ public class FarmController {
         .collect(Collectors.toList());
     return ResponseEntity.ok(cropsDtos);
   }
+
+  @PutMapping("/{farmId}")
+  public ResponseEntity<?> updateFarm(@PathVariable Long farmId, @RequestBody FarmDto farmDto) {
+    Optional<Farm> optionalFarm = farmService.getFarmById(farmId);
+    if (optionalFarm.isEmpty()) {
+      return ResponseEntity.status(HttpStatus.NOT_FOUND)
+          .body("Fazenda não encontrada!");
+    }
+    Farm farm = farmDto.toEntity();
+    farm.setId(farmId);
+    farmService.updateFarm(farmId, farm);
+    return ResponseEntity.ok(farmDto);
+  }
+
 }

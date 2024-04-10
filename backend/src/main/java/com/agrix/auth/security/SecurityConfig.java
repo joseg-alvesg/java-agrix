@@ -70,6 +70,7 @@ public class SecurityConfig {
               corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE",
                   "OPTIONS",
                   "HEAD", "TRACE", "CONNECT"));
+              corsConfig.setAllowedHeaders(Arrays.asList("*"));
               return corsConfig;
             }))
         .csrf(AbstractHttpConfigurer::disable)
