@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './modules/login/components/login/login.component';
 import { FarmListComponent } from './modules/farm/components/farm-list/farm-list.component';
+import { FarmDetailsComponent } from './modules/farm/components/farm-details/farm-details.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'farms', component: FarmListComponent },
+  { path: 'farms/:id', component: FarmDetailsComponent },
 ];
 
 @NgModule({

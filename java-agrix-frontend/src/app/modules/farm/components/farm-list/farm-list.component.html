@@ -20,8 +20,20 @@
     />
     <button type="button" (click)="newFarm()">s</button>
   </form>
-  <div *ngFor="let farm of farms">
-    <p>{{ farm.name }}</p>
-    <p>{{ farm.size }}</p>
-  </div>
+  <table *ngFor="let farm of farms">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Tamanho</th>
+        <th>goto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ farm.name }}</td>
+        <td>{{ farm.size }}</td>
+        <td><a [routerLink]="['/farms', farm.id]">ir</a></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
