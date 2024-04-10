@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { FarmService } from '../../services/farm.service';
 
 @Component({
   selector: 'app-farm-details',
@@ -10,11 +11,20 @@ export class FarmDetailsComponent {
   id!: string | null;
   farm: any;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private farmService: FarmService,
+  ) {}
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.getFarmById();
   }
 
-  getFarmId(): void {}
+  private getFarmById(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.farmService.getFarmById(id).subscribe((farm) => {
+      this.farm = farm;
+      console.log(farm);
+    });
+  }
 }
