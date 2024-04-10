@@ -146,6 +146,13 @@ public class FarmController {
     return ResponseEntity.ok(cropsDtos);
   }
 
+  /**
+   * Método que atualiza uma fazenda.
+   *
+   * @param farmId  id da fazenda
+   * @param farmDto DTO da fazenda
+   * @return ResponseEntity com a fazenda atualizada ou uma mensagem de erro.
+   */
   @PutMapping("/{farmId}")
   public ResponseEntity<?> updateFarm(@PathVariable Long farmId, @RequestBody FarmDto farmDto) {
     Optional<Farm> optionalFarm = farmService.getFarmById(farmId);

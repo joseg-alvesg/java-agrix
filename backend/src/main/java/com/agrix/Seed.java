@@ -1,16 +1,15 @@
 package com.agrix;
 
+import com.agrix.staff.entity.Person;
+import com.agrix.staff.repository.PersonRepository;
+import com.agrix.staff.security.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import com.agrix.staff.entity.Person;
-import com.agrix.staff.repository.PersonRepository;
-import com.agrix.staff.security.Role;
-
 /**
- * Seed
+ * Seed.
  */
 @Component
 public class Seed implements CommandLineRunner {
@@ -27,6 +26,9 @@ public class Seed implements CommandLineRunner {
     seedPerson();
   }
 
+  /**
+   * Método para criar pessoas.
+   */
   public void seedPerson() {
     Person admin = new Person();
     admin.setUsername("admin");

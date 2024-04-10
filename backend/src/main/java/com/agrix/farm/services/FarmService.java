@@ -112,6 +112,13 @@ public class FarmService {
     return Optional.empty();
   }
 
+  /**
+   * Método que atualiza uma fazenda.
+   *
+   * @param id   id da fazenda
+   * @param farm DTO da fazenda
+   * @return Optional com a fazenda atualizada ou um Optional vazio.
+   */
   public Optional<Farm> updateFarm(Long id, Farm farm) {
     Optional<Farm> optionalFarm = farmRepository.findById(id);
     if (optionalFarm.isPresent()) {
