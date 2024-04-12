@@ -26,4 +26,8 @@ export class FarmService {
   getFarmById(id: any) {
     return this.http.get<any>('http://localhost:8080/farms/' + id);
   }
+
+  getCropsByFarmId(id: any) {
+    return this.http.get<any>('http://localhost:8080/farms/' + id + '/crops');
+  }
 }

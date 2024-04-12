@@ -20,7 +20,7 @@
     />
     <button type="button" (click)="newFarm()">s</button>
   </form>
-  <table *ngFor="let farm of farms">
+  <table>
     <thead>
       <tr>
         <th>Nome</th>
@@ -28,7 +28,7 @@
         <th>goto</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let farm of farms">
       <tr>
         <td>{{ farm.name }}</td>
         <td>{{ farm.size }}</td>

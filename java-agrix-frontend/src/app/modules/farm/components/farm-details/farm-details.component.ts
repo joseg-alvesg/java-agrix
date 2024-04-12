@@ -10,6 +10,7 @@ import { FarmService } from '../../services/farm.service';
 export class FarmDetailsComponent {
   id!: string | null;
   farm: any;
+  crops!: any[];
 
   constructor(
     private route: ActivatedRoute,
@@ -17,14 +18,22 @@ export class FarmDetailsComponent {
   ) {}
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.getFarmById();
+    this.gerCropsByFarmId();
   }
 
   private getFarmById(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.farmService.getFarmById(id).subscribe((farm) => {
+    this.farmService.getFarmById(this.id).subscribe((farm) => {
       this.farm = farm;
       console.log(farm);
+    });
+  }
+
+  private gerCropsByFarmId(): void {
+    this.farmService.getCropsByFarmId(this.id).subscribe((crops) => {
+      this.crops = crops;
+      console.log(crops);
     });
   }
 }

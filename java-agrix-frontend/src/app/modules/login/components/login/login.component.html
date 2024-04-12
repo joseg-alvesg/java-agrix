@@ -1,38 +1,63 @@
-<div class="box">
-  <h1>{{ title }}</h1>
-  <p>{{ message }}</p>
-  <form
-    [formGroup]="formulario"
-    #formDir="ngForm"
-    (keyup.enter)="registro ? register() : login()"
-  >
-    <label for="username"> Nome de usuário: </label>
-    <input
-      type="text"
-      name="username"
-      placeholder="Jhon"
-      alt="Type your username"
-      class="form-control"
-      formControlName="username"
-      required
-    />
-    <label for="password">
-      Senha:
-      <input
-        type="password"
-        name="password"
-        alt="Type your password"
-        class="form-control"
-        formControlName="password"
-        required
-      />
-    </label>
-    <button type="button" (click)="registro ? register() : login()">
-      Login
-    </button>
-    {{ registro }}
-  </form>
-  <div>
-    <button (click)="formUpdate()">{{ sign }}</button>
+<div class="flex flex-col min-h-screen items-center justify-center">
+  <div class="w-full max-w-xs">
+    <form
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      [formGroup]="formulario"
+      #formDir="ngForm"
+      (keyup.enter)="registro ? register() : login()"
+    >
+      <div class="mb-10 text-gray-800 text-xl py-2 px-3 font-bold">
+        <h1>{{ title }}</h1>
+        <span>{{ message }}</span>
+      </div>
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="username"
+        >
+          Usuário:
+        </label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Jhon"
+          alt="Type your username"
+          class="fotm-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          formControlName="username"
+          required
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="password"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Senha:
+          <input
+            type="password"
+            name="password"
+            alt="Type your password"
+            class="fotm-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            formControlName="password"
+            required
+          />
+        </label>
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          type="button"
+          (click)="registro ? register() : login()"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Login
+        </button>
+        <button
+          (click)="formUpdate()"
+          class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          {{ sign }}
+        </button>
+      </div>
+    </form>
   </div>
 </div>

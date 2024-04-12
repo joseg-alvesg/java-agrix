@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 app-root {
   display: flex;
+  width: 100%;
+}
+
+app-login {
+  width: 100%;
+}
+
+main {
+  width: 100%;
 }
