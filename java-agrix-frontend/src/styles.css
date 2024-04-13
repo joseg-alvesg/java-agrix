@@ -8,7 +8,8 @@ app-root {
   width: 100%;
 }
 
-app-login {
+app-login,
+app-farm-list {
   width: 100%;
 }
 
