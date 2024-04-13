@@ -31,6 +31,7 @@ export class FarmListComponent {
       next: (response) => {
         console.log('resp1', response);
         this.farms.push(response);
+        this.formulario.reset();
       },
       error: (_error) => {
         alert('Erro ao criar fazenda!');

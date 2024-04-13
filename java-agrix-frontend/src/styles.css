@@ -9,7 +9,8 @@ app-root {
 }
 
 app-login,
-app-farm-list {
+app-farm-list,
+app-farm-details {
   width: 100%;
 }
 

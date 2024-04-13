@@ -14,9 +14,7 @@ export class FarmService {
   }
 
   newFarm(farm: IFarm) {
-    return this.http.post('http://localhost:8080/farms', farm, {
-      headers: { Authorization: this.getToken().token },
-    });
+    return this.http.post('http://localhost:8080/farms', farm);
   }
 
   getFarms() {
@@ -29,5 +27,9 @@ export class FarmService {
 
   getCropsByFarmId(id: any) {
     return this.http.get<any>('http://localhost:8080/farms/' + id + '/crops');
+  }
+
+  newCrop(id: any, crop: any) {
+    return this.http.post(`http://localhost:8080/farms/${id}/crops`, crop);
   }
 }
