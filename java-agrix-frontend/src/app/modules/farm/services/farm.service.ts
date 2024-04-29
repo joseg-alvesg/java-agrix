@@ -32,4 +32,8 @@ export class FarmService {
   newCrop(id: any, crop: any) {
     return this.http.post(`http://localhost:8080/farms/${id}/crops`, crop);
   }
+
+  getFertilizersByCropId(id: any) {
+    return this.http.get<any>(`http://localhost:8080/crops/${id}/fertilizers`);
+  }
 }

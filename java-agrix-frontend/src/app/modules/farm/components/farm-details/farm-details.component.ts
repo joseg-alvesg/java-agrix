@@ -13,7 +13,7 @@ export class FarmDetailsComponent {
   id!: string | null;
   farm: any;
   crops!: any[];
-  addCrop = true;
+  addCrop = false;
   cropForm!: any;
 
   constructor(
@@ -43,6 +43,15 @@ export class FarmDetailsComponent {
   private getCropsByFarmId(): void {
     this.farmService.getCropsByFarmId(this.id).subscribe((crops) => {
       this.crops = crops;
+      this.getFertilizersByCropId();
+    });
+  }
+
+  private getFertilizersByCropId(): void {
+    this.crops.forEach((crop: any) => {
+      crop.fertilizers = this.farmService
+        .getFertilizersByCropId(crop.id)
+        .subscribe((fertilizers) => (crop.fertilizers = fertilizers));
     });
   }
 

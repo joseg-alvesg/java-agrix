@@ -73,6 +73,13 @@
               class="shadow appearance-none border rounded w-1/8 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2"
             />
           </label>
+          <button
+            type="button"
+            (click)="newCrop()"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Salvar
+          </button>
         </form>
       </div>
 
@@ -88,11 +95,12 @@
               <th class="py-3 px-4 text-left">area</th>
               <th class="py-3 px-4 text-left">data de plantação</th>
               <th class="py-3 px-4 text-left">data de colheita</th>
+              <th class="py-3 px-4 text-left">Fertilizado</th>
               <th class="py-3 px-4 text-left">funções</th>
             </tr>
           </thead>
           <tbody class="overflow-y-auto h-96">
-            <tr *ngFor="let crop of crops" class="border-b border-gray-100">
+            <tr *ngFor="let crop of crops" class="border-b-2 border-gray-100">
               <td class="py-3 px-4 text-left">{{ crop.name | titlecase }}</td>
               <td class="py-3 px-4 text-left">{{ crop.plantedArea }}</td>
               <td class="py-3 px-4 text-left">
@@ -100,6 +108,9 @@
               </td>
               <td class="py-3 px-4 text-left">
                 {{ crop.harvestDate | date: "dd/MM/yyyy" }}
+              </td>
+              <td class="py-3 px-4 text-left">
+                {{ crop.fertilizers.length > 0 ? "Sim" : "Não" }}
               </td>
               <td>update\delete</td>
             </tr>
