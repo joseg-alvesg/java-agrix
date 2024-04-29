@@ -17,6 +17,7 @@ import { FarmListComponent } from './modules/farm/components/farm-list/farm-list
 import { FarmCropsComponent } from './modules/farm/components/farm-crops/farm-crops.component';
 import { FarmDetailsComponent } from './modules/farm/components/farm-details/farm-details.component';
 import { authInterceptor } from './modules/auth.interceptor';
+import { SvgIconsComponent } from './modules/svg-icons/svg-icons.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { authInterceptor } from './modules/auth.interceptor';
     FarmListComponent,
     FarmCropsComponent,
     FarmDetailsComponent,
+    SvgIconsComponent,
   ],
   imports: [
     BrowserModule,

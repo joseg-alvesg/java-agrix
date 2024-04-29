@@ -112,17 +112,9 @@
               <td class="py-3 px-4">
                 {{ crop.fertilizers.length > 0 ? "Sim" : "Não" }}
               </td>
-              <td class="py-3 px-4">
-                <img
-                  alt="edit"
-                  src="/assets/updateIcon.svg"
-                  class="w-10 h-10 cursor-pointer"
-                />
-                <img
-                  alt="delete"
-                  src="/assets/deleteIcon.svg"
-                  class="w-4 h-4 cursor-pointer"
-                />
+              <td class="py-3 px-4 flex justify-evenly">
+                <app-svg-icons iconName="updateIcon" strokeColor="green" />
+                <app-svg-icons iconName="deleteIcon" strokeColor="red" />
               </td>
             </tr>
           </tbody>
