@@ -85,34 +85,45 @@
 
       <div *ngIf="crops && crops.length === 0">Não existem plantações</div>
       <div class="block max-h-full overflow-y-auto h-3/4">
-        <table
-          *ngIf="crops && crops.length > 0"
-          class="bg-white rounded px-8 pt-6 pb-8 mb-4 w-full text-center h-full"
-        >
-          <thead class="stick top-0">
-            <tr class="bg-blue-gray-100 text-gray-700">
-              <th class="py-3 px-4 text-left">nome</th>
-              <th class="py-3 px-4 text-left">area</th>
-              <th class="py-3 px-4 text-left">data de plantação</th>
-              <th class="py-3 px-4 text-left">data de colheita</th>
-              <th class="py-3 px-4 text-left">Fertilizado</th>
-              <th class="py-3 px-4 text-left">funções</th>
+        <table *ngIf="crops && crops.length > 0" class="table-auto w-full">
+          <thead class="stick top-0 bg-gray-600">
+            <tr class="text-white">
+              <th class="py-3 px-4">nome</th>
+              <th class="py-3 px-4">area</th>
+              <th class="py-3 px-4">data de plantação</th>
+              <th class="py-3 px-4">data de colheita</th>
+              <th class="py-3 px-4">Fertilizado</th>
+              <th class="py-3 px-4">funções</th>
             </tr>
           </thead>
           <tbody class="overflow-y-auto h-96">
-            <tr *ngFor="let crop of crops" class="border-b-2 border-gray-100">
-              <td class="py-3 px-4 text-left">{{ crop.name | titlecase }}</td>
-              <td class="py-3 px-4 text-left">{{ crop.plantedArea }}</td>
-              <td class="py-3 px-4 text-left">
+            <tr
+              *ngFor="let crop of crops"
+              class="border-b-2 border-gray-100 odd:bg-white even:bg-slate-50 hover:bg-sky-200 hover:ring-sky-200"
+            >
+              <td class="py-3 px-4">{{ crop.name | titlecase }}</td>
+              <td class="py-3 px-4">{{ crop.plantedArea }}</td>
+              <td class="py-3 px-4">
                 {{ crop.plantedDate | date: "dd/MM/yyyy" }}
               </td>
-              <td class="py-3 px-4 text-left">
+              <td class="py-3 px-4">
                 {{ crop.harvestDate | date: "dd/MM/yyyy" }}
               </td>
-              <td class="py-3 px-4 text-left">
+              <td class="py-3 px-4">
                 {{ crop.fertilizers.length > 0 ? "Sim" : "Não" }}
               </td>
-              <td>update\delete</td>
+              <td class="py-3 px-4">
+                <img
+                  alt="edit"
+                  src="/assets/updateIcon.svg"
+                  class="w-10 h-10 cursor-pointer"
+                />
+                <img
+                  alt="delete"
+                  src="/assets/deleteIcon.svg"
+                  class="w-4 h-4 cursor-pointer"
+                />
+              </td>
             </tr>
           </tbody>
         </table>
