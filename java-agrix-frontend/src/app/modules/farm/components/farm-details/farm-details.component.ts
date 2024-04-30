@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FarmService } from '../../services/farm.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,11 +12,11 @@ import { ICrops } from '../../interfaces/crops';
 export class FarmDetailsComponent {
   id!: string | null;
   farm: any;
-  farmForm!: any;
   crops!: any[];
   addCrop = false;
   cropForm!: any;
   toogleFarmUpdate: boolean = false;
+  showModal: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,17 +28,20 @@ export class FarmDetailsComponent {
       plantedDate: new FormControl('', Validators.required),
       harvestDate: new FormControl('', Validators.required),
     });
-
-    this.farmForm = new FormGroup({
-      farmName: new FormControl('', Validators.required),
-      size: new FormControl('', Validators.required),
-    });
   }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getFarmById();
     this.getCropsByFarmId();
+  }
+
+  onModalClose(): void {
+    this.getFarmById();
+  }
+
+  toggleModal() {
+    this.showModal = !this.showModal;
   }
 
   private getFarmById(): void {
@@ -77,20 +80,5 @@ export class FarmDetailsComponent {
 
   addCropForm(): void {
     this.addCrop = !this.addCrop;
-  }
-  toggleUpdateFarm(): void {
-    this.toogleFarmUpdate = !this.toogleFarmUpdate;
-  }
-
-  updateFarm(): void {
-    const farm = {
-      name: this.farmForm.value.farmName,
-      size: this.farmForm.value.size,
-    };
-    console.log(farm);
-    this.farmService.updateFarm(this.id, farm).subscribe(() => {
-      this.getFarmById();
-      this.toogleFarmUpdate = false;
-    });
   }
 }

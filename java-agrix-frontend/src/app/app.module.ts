@@ -18,6 +18,7 @@ import { FarmCropsComponent } from './modules/farm/components/farm-crops/farm-cr
 import { FarmDetailsComponent } from './modules/farm/components/farm-details/farm-details.component';
 import { authInterceptor } from './modules/auth.interceptor';
 import { SvgIconsComponent } from './modules/svg-icons/svg-icons.component';
+import { UpdateCropModalComponent } from './modules/farm/modals/update-crop-modal/update-crop-modal.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SvgIconsComponent } from './modules/svg-icons/svg-icons.component';
     FarmCropsComponent,
     FarmDetailsComponent,
     SvgIconsComponent,
+    UpdateCropModalComponent,
   ],
   imports: [
     BrowserModule,

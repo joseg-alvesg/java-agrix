@@ -1,41 +1,15 @@
 <div class="flex flex-col h-screen items-center justify-center w-full">
+  <app-update-crop-modal
+    [showModal]="showModal"
+    [farm]="farm"
+    (onClose)="onModalClose()"
+  />
   <div class="w-11/12 flex flex-col h-1/4">
-    <div *ngIf="!toogleFarmUpdate">
-      <h1 class="mt-20 mb-10 text-xl font-bold text-black-800">
-        {{ farm?.name }}
-      </h1>
-      <h3>Tamanho: {{ farm?.size }}</h3>
-      <button (click)="toggleUpdateFarm()" class="">Atualizar</button>
-    </div>
-    <form
-      [formGroup]="farmForm"
-      class="flex flex-col"
-      *ngIf="toogleFarmUpdate"
-      #formDir="ngForm"
-    >
-      <label for="name" class="text-gray-700 text-sm font-bold mr-1"
-        >Nome:</label
-      >
-      <input
-        type="text"
-        name="name"
-        formControlName="farmName"
-        class="shadow appearance-none border rounded w-1/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2"
-        [ngModel]="farm?.name"
-      />
-
-      <label for="size" class="text-gray-700 text-sm font-bold mr-1"
-        >Tamanho:</label
-      >
-      <input
-        type="number"
-        name="size"
-        formControlName="size"
-        class="shadow appearance-none border rounded w-20 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-5"
-        [ngModel]="farm?.size"
-      />
-      <button (click)="updateFarm()" class="">Atualizar</button>
-    </form>
+    <h1 class="mt-20 mb-10 text-xl font-bold text-black-800">
+      {{ farm?.name }}
+    </h1>
+    <h3>Tamanho: {{ farm?.size }}</h3>
+    <button (click)="toggleModal()" class="">Atualizar</button>
   </div>
   <div class="flex h-full items-center justify-center w-full h-3/4">
     <div class="w-4/5 h-full w-11/12">
@@ -145,8 +119,16 @@
                 {{ crop.fertilizers.length > 0 ? "Sim" : "Não" }}
               </td>
               <td class="py-3 px-4 flex justify-evenly">
-                <app-svg-icons iconName="updateIcon" strokeColor="green" />
-                <app-svg-icons iconName="deleteIcon" strokeColor="red" />
+                <app-svg-icons
+                  iconName="updateIcon"
+                  strokeColor="green"
+                  class="cursor-pointer"
+                />
+                <app-svg-icons
+                  iconName="deleteIcon"
+                  strokeColor="red"
+                  class="cursor-pointer"
+                />
               </td>
             </tr>
           </tbody>
