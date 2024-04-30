@@ -36,4 +36,9 @@ export class FarmService {
   getFertilizersByCropId(id: any) {
     return this.http.get<any>(`http://localhost:8080/crops/${id}/fertilizers`);
   }
+
+  updateFarm(id: any, farm: any) {
+    console.log(farm);
+    return this.http.put(`http://localhost:8080/farms/${id}`, farm);
+  }
 }

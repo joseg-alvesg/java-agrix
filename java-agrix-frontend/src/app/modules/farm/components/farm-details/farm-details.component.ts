@@ -12,9 +12,11 @@ import { ICrops } from '../../interfaces/crops';
 export class FarmDetailsComponent {
   id!: string | null;
   farm: any;
+  farmForm!: any;
   crops!: any[];
   addCrop = false;
   cropForm!: any;
+  toogleFarmUpdate: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +27,11 @@ export class FarmDetailsComponent {
       area: new FormControl('', Validators.required),
       plantedDate: new FormControl('', Validators.required),
       harvestDate: new FormControl('', Validators.required),
+    });
+
+    this.farmForm = new FormGroup({
+      farmName: new FormControl('', Validators.required),
+      size: new FormControl('', Validators.required),
     });
   }
 
@@ -43,12 +50,12 @@ export class FarmDetailsComponent {
   private getCropsByFarmId(): void {
     this.farmService.getCropsByFarmId(this.id).subscribe((crops) => {
       this.crops = crops;
-      this.getFertilizersByCropId();
+      this.getFertilizersByCropId(crops);
     });
   }
 
-  private getFertilizersByCropId(): void {
-    this.crops.forEach((crop: any) => {
+  private getFertilizersByCropId(crops: any): void {
+    crops.forEach((crop: any) => {
       crop.fertilizers = this.farmService
         .getFertilizersByCropId(crop.id)
         .subscribe((fertilizers) => (crop.fertilizers = fertilizers));
@@ -70,5 +77,20 @@ export class FarmDetailsComponent {
 
   addCropForm(): void {
     this.addCrop = !this.addCrop;
+  }
+  toggleUpdateFarm(): void {
+    this.toogleFarmUpdate = !this.toogleFarmUpdate;
+  }
+
+  updateFarm(): void {
+    const farm = {
+      name: this.farmForm.value.farmName,
+      size: this.farmForm.value.size,
+    };
+    console.log(farm);
+    this.farmService.updateFarm(this.id, farm).subscribe(() => {
+      this.getFarmById();
+      this.toogleFarmUpdate = false;
+    });
   }
 }

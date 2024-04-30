@@ -1,4 +1,5 @@
 <div class="flex flex-col justify-center items-center">
+  <h1 class="text-3xl font-bold">Fazendas</h1>
   <form
     [formGroup]="formulario"
     #formDir="ngForm"
@@ -49,7 +50,13 @@
       <tr>
         <td>{{ farm.name }}</td>
         <td>{{ farm.size }}</td>
-        <td><a [routerLink]="['/farms', farm.id]">ir</a></td>
+        <td>
+          <app-svg-icons
+            iconName="goToIcon"
+            fillColor="blue"
+            [routerLink]="['/farms', farm.id]"
+          />
+        </td>
       </tr>
     </tbody>
   </table>

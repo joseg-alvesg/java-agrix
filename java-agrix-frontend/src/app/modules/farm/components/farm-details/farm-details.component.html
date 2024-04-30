@@ -1,9 +1,41 @@
 <div class="flex flex-col h-screen items-center justify-center w-full">
   <div class="w-11/12 flex flex-col h-1/4">
-    <h1 class="mt-20 mb-10 text-xl font-bold text-black-800">
-      {{ farm?.name }}
-    </h1>
-    <h3>Tamanho: {{ farm?.size }}</h3>
+    <div *ngIf="!toogleFarmUpdate">
+      <h1 class="mt-20 mb-10 text-xl font-bold text-black-800">
+        {{ farm?.name }}
+      </h1>
+      <h3>Tamanho: {{ farm?.size }}</h3>
+      <button (click)="toggleUpdateFarm()" class="">Atualizar</button>
+    </div>
+    <form
+      [formGroup]="farmForm"
+      class="flex flex-col"
+      *ngIf="toogleFarmUpdate"
+      #formDir="ngForm"
+    >
+      <label for="name" class="text-gray-700 text-sm font-bold mr-1"
+        >Nome:</label
+      >
+      <input
+        type="text"
+        name="name"
+        formControlName="farmName"
+        class="shadow appearance-none border rounded w-1/4 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2"
+        [ngModel]="farm?.name"
+      />
+
+      <label for="size" class="text-gray-700 text-sm font-bold mr-1"
+        >Tamanho:</label
+      >
+      <input
+        type="number"
+        name="size"
+        formControlName="size"
+        class="shadow appearance-none border rounded w-20 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-5"
+        [ngModel]="farm?.size"
+      />
+      <button (click)="updateFarm()" class="">Atualizar</button>
+    </form>
   </div>
   <div class="flex h-full items-center justify-center w-full h-3/4">
     <div class="w-4/5 h-full w-11/12">
@@ -84,9 +116,9 @@
       </div>
 
       <div *ngIf="crops && crops.length === 0">Não existem plantações</div>
-      <div class="block max-h-full overflow-y-auto h-3/4">
+      <div class="block overflow-y-auto h-3/4">
         <table *ngIf="crops && crops.length > 0" class="table-auto w-full">
-          <thead class="stick top-0 bg-gray-600">
+          <thead class="bg-gray-600">
             <tr class="text-white">
               <th class="py-3 px-4">nome</th>
               <th class="py-3 px-4">area</th>
@@ -96,7 +128,7 @@
               <th class="py-3 px-4">funções</th>
             </tr>
           </thead>
-          <tbody class="overflow-y-auto h-96">
+          <tbody class="overflow-y-auto">
             <tr
               *ngFor="let crop of crops"
               class="border-b-2 border-gray-100 odd:bg-white even:bg-slate-50 hover:bg-sky-200 hover:ring-sky-200"
